@@ -1,0 +1,234 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+
+    <link rel="shortcut icon" href="{% static 'img/apple-touch-icon-72x72-precomposed.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'stylee.css' %}">
+    <title>Privacy Policy</title>
+</head>
+
+<body>
+
+    <!-- coding start-->
+    <!-- header -->
+    <header class="header header-spatial">
+
+        <div class="header-home ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row header-left">
+                            <div class="col-md-4 p-0 ">
+
+                                <div class="logo d-flex">
+                                    <a href="./">
+                                        <img src="{% static 'img/logo.png' %}" alt="">
+                                        <h6>Kotir Ghor</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 p-0">
+
+                                <div class="manu">
+                                    <a href="./">Home</a>
+                                    <a href="./product">Product</a>
+                                    <a href="./about">About Us</a>
+                                    <a href="./contact">Contract Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <div class="navbar p-0 navbar-light">
+                            <form action="./search" method="post">
+                                {% csrf_token %}
+                                <div class="row p-0">
+                                    <div class="col-md-7 p-0">
+                                        <input class="form-control me-2" name="searched" type="search" placeholder="Search" aria-label="Search">
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <button class="search-button bg form-control" type="submit">Search</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <!-- back end work -->
+                        <!-- s sadi for you -->
+                        <div class="sing-in">
+                            <ul class="sing-in">
+                                {% if user.is_authenticated %}
+                                <li><i class="fa-solid fa-user"></i></li>
+                                <li>{{ user.username }}</li>
+                                <li>or</li>
+                                <li><a href="./logout">Log Out</a></li>
+                                {% else %}
+                                <li><i class="fa-solid fa-user"></i></li>
+                                <li><a href="./register">Register</a></li>
+                                <li>or</li>
+                                <li><a href="./login">Login</a></li>
+                                {% endif %}
+                            </ul>                                
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!--about section-->
+    <div class="privacy border-top border-bottom">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-12 mb-3 pl-1 border-bottom">
+                    <h3 class="hover mb-2">Privicy Policy</h3>
+                </div>
+                <!--privite policy-->
+                <div class="container">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-12">
+                        <h4 class="mt-4 mb-2">Account Terms</h4>
+                        <ul class="d-flex list-group border-bottom pb-3">
+                            <li class="mb-2">You must be 13 years or older to use this Service.</li>
+                            <li class="mb-2">You must be a human. Accounts registered by "bots" or other automated methods are not permitted.</li>
+                            <li class="mb-2">You must provide your name, a valid email address, and any other information requested in order to complete the registration process.</li>
+                            <li class="mb-2">Your login may only be used by one person - i.e., a single login may not be shared by multiple people - except that a machine user's actions may be directed by multiple people. </li>
+                            <li class="mb-2">You are responsible for all activity that occurs under your account.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h4 class="mt-4 mb-2">Cancelation & Termination</h4>
+                    <ul class="d-flex list-group border-bottom pb-4">
+                        <li class="mb-2">You must be 13 years or older to use this Service.</li>
+                        <li class="mb-2">You must be a human. Accounts registered by "bots" or other automated methods are not permitted.</li>
+                        <li class="mb-2">Your login may only be used by one person - i.e., a single login may not be shared by multiple people - except that a machine user's actions may be directed by multiple people. </li>
+                        <li class="mb-2">You are responsible for all activity that occurs under your account.</li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <h4 class="mt-4 mb-2">Modifications to the Service</h4>
+                    <ul class="d-flex list-group border-bottom pb-4">
+                        <li class="mb-2">You must be 13 years or older to use this Service.</li>
+                        <li class="mb-2">You are responsible for all activity that occurs under your account.</li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <h4 class="mt-4 mb-2"> Copyright & Content Ownership</h4>
+                    <ul class="d-flex list-group border-bottom pb-4">
+                        <li class="mb-2">You must be 13 years or older to use this Service.</li>
+                        <li class="mb-2">You must be a human. Accounts registered by "bots" or other automated methods are not permitted.</li>
+                        <li class="mb-2">You must provide your name, a valid email address, and any other information requested in order to complete the registration process.</li>
+                        <li class="mb-2">Your login may only be used by one person - i.e., a single login may not be shared by multiple people - except that a machine user's actions may be directed by multiple people. </li>
+                        <li class="mb-2">You are responsible for all activity that occurs under your account.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- fotter section-->
+
+    <div class="footer">
+        <div class="footer-top padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-logo">
+                            <a href="./" class="">
+                                <img src="{% static 'img/logo.png' %}" alt="">
+                                <h6>Kotir Ghor</h6>
+                            </a>
+                        </div>
+                        <div class="phone d-flex">
+                            <span class="left hover"><i class="fa-solid fa-headset"></i></span>
+                            <p class="right">+8801712442341</p>
+                        </div>
+
+                        <div class="contract-info">
+                            <h4>Contact info</h4>
+                            <span>Dhaka Polytechnic Institute ; Shaheed Tajuddin Ahmed Avenue, Tejgaon Industrial Area,Dhaka-1208</span>
+                            <div class="contact-info-social d-flex">
+                                <a href="#">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h4>CUSTOMER SERVICE</h4>
+                        <a href="./contact">Contact Us</a>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>TERMS & POLICY</h4>
+                        <a href="./TermsAndConditions">Terms & Condition of use</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 text-center">
+                        <p>Copy right by <a href="#">Gorup-5</a> - All rights Reserved</p>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <script>
+        var myModal = document.getElementById('exampleModal');
+        var myInput = document.getElementById('exampleModal');
+
+        myModal.addEventListener('shown.bs.modal', function() {
+            myInput.focus()
+        });
+    </script>
+</body>
+
+</html>

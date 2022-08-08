@@ -1,0 +1,374 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    
+    <!-- link-responsive -->
+    <link rel="stylesheet" href="{% static 'responsive.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'img/apple-touch-icon-72x72-precomposed.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'stylee.css' %}">
+
+    <title>কুটির ঘর</title>
+    
+</head>
+
+<body>
+
+    <!-- coding start-->
+    <!-- header -->
+    <header class="header">
+
+        <div class="header-home">
+            <div class="container">
+                <div class="row  header-block">
+                    <div class="col-lg-6">
+                        <div class="row header-left">
+                            <div class="col-lg-4">
+
+                                <div  iv class="logo" style="display: flex;">
+                                    <a href="./">
+                                        <img src="{% static 'img/logo.png' %}" alt="">
+                                        <h6>Kotir Ghor</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-8 p-0">
+
+                                <div class="manu">
+                                    <a href=".">Home</a>
+                                    <a href="./product">Product</a>
+                                    <a href="./payment">Payment</a>
+                                    <a href="./about">About Us</a>
+                                    <a href="./contact">Contract Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-8 d-flex justify-content-lg-end justify-content-start">
+                        <div class=" p-0 navbar-light">
+                            <form action="./search" method="post">
+                                {% csrf_token %}
+                                <div class="row p-0 search-block">
+                                    <div class="col-lg-7 col-7 p-0">
+                                        <input class="search-bar me-2" name="searched" type="search" placeholder="Search" aria-label="Search">
+                                    </div>
+                                    <div class="col-lg-5 col-5">
+                                        <button class="search-button bg" type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-4">
+                        <!-- back end work -->
+                        <!-- s sadi for you -->
+                        <div class="sing-in">
+                            <ul class="sing-in">
+                                {% if user.is_authenticated %}
+                                <li><i class="fa-solid fa-user"></i></li>
+                                <li>{{ user.username }}</li>
+                                <li>or</li>
+                                <li><a href="./logout">Log Out</a></li>
+                                {% else %}
+                                <li><i class="fa-solid fa-user"></i></li>
+                                <li><a href="./register">Register</a></li>
+                                <li>or</li>
+                                <li><a href="./login">Login</a></li>
+                                {% endif %}
+                            </ul>                                
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </header>
+
+    <!---->
+    <!--card button-->
+    <!--s sadi for you-->
+    <div class="add-card">
+        <a href="payment"><i class="fa-regular bg fa-credit-card">
+        </i></a>
+        <span style="color: red;font-size: 20px;position: relative;left: -27px;bottom: 14px;">{{total_quantity}}</span>
+    </div>
+
+
+    <!--product section -->
+    <div class="product-section backgraound padding" id="product">
+
+        <div class="container">
+
+            <div class="row products-header">
+                <div class="col-4">
+                    <span>Populer Products</span>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-2 text-end">
+                    <a href="#" class="bg">View All</a>
+                </div>
+            </div>
+            <div class="products border-bottom pb-4">
+                <div class="row">
+                    
+                    {% for i in allitems %}
+                    <div class="col-md-3">
+                        <a href="./cart/{{i.id}}">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="{{ i.image_path }}" alt="">
+                                </div>
+                                <div class="product-text">
+                                    <h5>{{ i.title }}</h5>
+                                    <p>{{ i.discription|truncatechars:40 }}</p>
+                                </div>
+                                <div class="product-paymant">
+                                    <p class="fist">{{ i.price }}Tk</p>
+                                    <p class="secoend bg">buy now</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+            <div class="row products-header">
+                <div class="col-4">
+                    <span>Earthenware Products</span>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-2 text-end">
+                    <a href="#" class="bg">View All</a>
+                </div>
+            </div>
+            <div class="products border-bottom pb-4">
+                <div class="row">
+                    {% for i in eitems %}
+                    <div class="col-md-3">
+                        <a href="./cart/{{i.id}}">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="{{ i.image_path }}" alt="">
+                                </div>
+                                <div class="product-text">
+                                    <h4>{{ i.title }}</h4><br>
+                                    <p>{{ i.discription|truncatechars:40 }}</p>
+                                </div>
+                                <div class="product-paymant">
+                                    <p class="fist">{{ i.price }}Tk</p>
+                                    <p class="secoend bg">buy now</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="row products-header">
+                <div class="col-4">
+                    <span>Bamboo Products</span>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-2 text-end">
+                    <a href="#" class="bg">View All</a>
+                </div>
+            </div>
+            <div class="products border-bottom pb-4">
+                <div class="row">
+                    
+                    {% for i in bitems %}
+                    <div class="col-md-3">
+                        <a href="./cart/{{i.id}}">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="{{ i.image_path }}" alt="">
+                                </div>
+                                <div class="product-text">
+                                    <h4>{{ i.title }}</h4><br>
+                                    <p>{{ i.discription|truncatechars:40 }}</p>
+                                </div>
+                                <div class="product-paymant">
+                                    <p class="fist">{{ i.price }}Tk</p>
+                                    <p class="secoend bg">buy now</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+            <div class="row products-header">
+                <div class="col-4">
+                    <span>Cane Products</span>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-2 text-end">
+                    <a href="#" class="bg">View All</a>
+                </div>
+            </div>
+            <div class="products border-bottom pb-4">
+                <div class="row">
+
+                    {% for i in citems %}
+                    <div class="col-md-3">
+                        <a href="./cart/{{i.id}}">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="{{ i.image_path }}" alt="">
+                                </div>
+                                <div class="product-text">
+                                    <h4>{{ i.title }}</h4><br>
+                                    <p>{{ i.discription|truncatechars:40 }}</p>
+                                </div>
+                                <div class="product-paymant">
+                                    <p class="fist">{{ i.price }}Tk</p>
+                                    <p class="secoend bg">buy now</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    <!--contact-section-->
+    <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="social-media">
+                        <h2>Follow Us On</h2>
+                        <div class="logo">
+                            <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href=""><i class="fa-brands fa-twitter"></i></a>
+                            <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form action="#" class="form">
+                        <input type="email" class="home-email form-control" placeholder="Your Email">
+                        <button class="signin form-control w-50">Sing-in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- fotter section-->
+
+    <div class="footer">
+        <div class="footer-top padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-logo">
+                            <a href="" class="">
+                                <img src="{% static '/img/logo.png' %}" alt="">
+                                <h6>Kotir Ghor</h6>
+                            </a>
+                        </div>
+                        <div class="phone d-flex">
+                            <span class="left hover"><i class="fa-solid fa-headset"></i></span>
+                            <p class="right">+8801712442341</p>
+                        </div>
+
+                        <div class="contract-info">
+                            <h4>Contact info</h4>
+                            <span>Dhaka Polytechnic Institute ; Shaheed Tajuddin Ahmed Avenue, Tejgaon Industrial Area,Dhaka-1208</span>
+                            <div class="contact-info-social d-flex">
+                                <a href="#">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h4>CUSTOMER SERVICE</h4>
+                        <a href="./contact">Contact Us</a>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>TERMS & POLICY</h4>
+                        <a href="./TermsAndConditions">Terms & Condition of use</a>
+                        <a href="./PrivacyAndPolicy">Privacy Policy</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 text-center">
+                        <p>Copy right by <a href="#">Gorup-5</a> - All rights Reserved</p>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery link start-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{% static 'min.js' %}"></script>
+     <!-- jquery link end -->
+     
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <script>
+        var myModal = document.getElementById('exampleModal');
+        var myInput = document.getElementById('exampleModal');
+
+        myModal.addEventListener('shown.bs.modal', function() {
+            myInput.focus()
+        });
+    </script>
+</body>
+
+</html>

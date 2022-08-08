@@ -1,0 +1,211 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+
+    <link rel="shortcut icon" href="{% static 'img/apple-touch-icon-72x72-precomposed.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'stylee.css' %}">
+    <title>Terms & Condition</title>
+</head>
+
+<body>
+
+    <!-- coding start-->
+    <!-- header -->
+    <header class="header header-spatial">
+
+        <div class="header-home ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row header-left">
+                            <div class="col-md-4 p-0 ">
+
+                                <div class="logo d-flex">
+                                    <a href="./">
+                                        <img src="{% static 'img/logo.png' %}" alt="">
+                                        <h6>Kotir Ghor</h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-8 p-0">
+
+                                <div class="manu">
+                                    <a href="./">Home</a>
+                                    <a href="./product">Product</a>
+                                    <a href="./about">About Us</a>
+                                    <a href="./contact">Contract Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <div class="navbar p-0 navbar-light">
+                            <form action="./search" method="post">
+                                {% csrf_token %}
+                                <div class="row p-0">
+                                    <div class="col-md-7 p-0">
+                                        <input class="form-control me-2" name="searched" type="search" placeholder="Search" aria-label="Search">
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <button class="search-button bg form-control" type="submit">Search</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <!-- back end work -->
+                        <!-- s sadi for you -->
+                        <div class="sing-in">
+                            <ul class="sing-in">
+                                {% if user.is_authenticated %}
+                                <li><i class="fa-solid fa-user"></i></li>
+                                <li>{{ user.username }}</li>
+                                <li>or</li>
+                                <li><a href="./logout">Log Out</a></li>
+                                {% else %}
+                                <li><i class="fa-solid fa-user"></i></li>
+                                <li><a href="./register">Register</a></li>
+                                <li>or</li>
+                                <li><a href="./login">Login</a></li>
+                                {% endif %}
+                            </ul>                                
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!--about section-->
+    <div class="terms border-top border-bottom">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-12 pl-1 pb-1 mb-2 border-bottom">
+                    <h3 class="hover">Terms & Condition</h3>
+                </div>
+                <div class="col-md-12">
+                    <p class="text-muted">
+                        Thank you for choosing to be part of our community at Kotir Ghor e-commerce Ltd., doing business as Kotir Ghor ("Kotir Ghor," "we," "us," or "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions
+                        or concerns about this privacy notice or our practices with regard to your personal information, please contact us at info@Kotir Ghor. This privacy notice describes how we might use your information if you :
+                    </p>
+                    <div class="container">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-11 mt-4 mb-2">
+                            <ul class="d-flex text-muted list-group pb-3">
+                                <li class="mb-2">Visit our website at https://কুঁড়ে ঘর </li>
+                                <li class="mb-2">Engage with us in other related ways ― including any sales, marketing, or events In this privacy notice, if we refer to:</li>
+                                <li class="mb-2">"Website," we are referring to any website of ours that references or links to this policy</li>
+                                <li class="mb-2">"Services," we are referring to our Website, App, and other related services, including any sales, marketing, or events The purpose of this privacy notice is to explain to you in the clearest way possible what information
+                                    we collect, how we use it, and what rights you have in relation to it. If there are any terms in this privacy notice that you do not agree with, please discontinue use of our Services immediately. </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- fotter section-->
+
+    <div class="footer">
+        <div class="footer-top padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-logo">
+                            <a href="./" class="">
+                                <img src="{% static 'img/logo.png' %}" alt="">
+                                <h6>Kotir Ghor</h6>
+                            </a>
+                        </div>
+                        <div class="phone d-flex">
+                            <span class="left hover"><i class="fa-solid fa-headset"></i></span>
+                            <p class="right">+8801712442341</p>
+                        </div>
+
+                        <div class="contract-info">
+                            <h4>Contact info</h4>
+                            <span>Dhaka Polytechnic Institute ; Shaheed Tajuddin Ahmed Avenue, Tejgaon Industrial Area,Dhaka-1208</span>
+                            <div class="contact-info-social d-flex">
+                                <a href="#">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h4>CUSTOMER SERVICE</h4>
+                        <a href="./contact">Contact Us</a>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>TERMS & POLICY</h4>
+                        <a href="">Terms & Condition of use</a>
+                        <a href="./PrivacyAndPolicy">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 text-center">
+                        <p>Copy right by <a href="#">Gorup-5</a> - All rights Reserved</p>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <script>
+        var myModal = document.getElementById('exampleModal');
+        var myInput = document.getElementById('exampleModal');
+
+        myModal.addEventListener('shown.bs.modal', function() {
+            myInput.focus()
+        });
+    </script>
+</body>
+
+</html>
