@@ -12,10 +12,15 @@ from django.core.mail import send_mail
 def cart_quantity_counter(req):
     total_quantity = 0
     if req.user.is_authenticated:
-        u = Order.objects.get(user=req.user)
-        item_list = u.items.filter(ordered=False)
-        for i in item_list:
-            total_quantity += i.quantity
+        try:
+            u = Order.objects.get(user=req.user)
+            item_list = u.items.filter(ordered=False)
+            for i in item_list:
+                total_quantity += i.quantity
+        except Exception:
+            #kotirghorapp.models.Order.DoesNotExist: Order matching query does not exist.
+            #error handeling 
+            pass
     return str(total_quantity)
 
 
@@ -179,7 +184,7 @@ def search_htm(request):
     total_item= cart_quantity_counter(request)
     if request.method == "POST":
         item_name = request.POST["searched"]
-        searchitems = Item.objects.filter(title = item_name)
+        searchitems = Item.objects.filter(title__icontains = item_name)
     else:
         searchitems = ""
     return render(request, "search.html", context={"searchitems": searchitems, "total_quantity":total_item})
